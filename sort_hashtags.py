@@ -1,14 +1,21 @@
-import whatever
+import collections
 
 def get_top_linked_hashtags(tweets, num_hashtags):
         """
         Get most frequent distinct hashtags from json tweet list
 
         Inputs:
-            tweets:         List containing tweets from twitter json response
+            tweets:         List of dictionaries containing tweet information
             num_hashtags:   Number of top hashtags to save
 
         Outputs:
-            top_hashtages:  List of top 'num_hashtags' hashtags from input tweets
-
+            top_n_hashtages:  List of top 'num_hashtags' hashtags from input tweets
         """
+
+        all_hashtags = [tweet['hashtags'] for tweet in tweets]
+
+        distinct_hashtags = collections.Counter(all_hashtags)
+
+        top_n_hashtags = distinct_hashtags.most_common(num_hashtags)
+
+        return top_n_hashtags
