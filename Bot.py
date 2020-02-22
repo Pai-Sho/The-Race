@@ -15,6 +15,10 @@ class Bot:
         self.DEBUG = DEBUG
         return
 
+    ###############################################################################
+    #                   PRIVATE FUNCTIONS
+    ###############################################################################
+
     def __get_leaves(self, start=True):
         '''
         Get the leaves of a tree
@@ -130,6 +134,10 @@ class Bot:
         self.start_tree.show()
         print('\nending tree:')
         self.end_tree.show()
+
+    #######################################################################
+    #               Public Functions
+    #######################################################################
 
     def search(self, start_hashtag, end_hashtag):
         """
