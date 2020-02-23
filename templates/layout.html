@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Home.css') }}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section>
+      <img class="logo" src="{{ url_for('static', filename='logo.png') }}" />
+      <div class="header">
+        <p class="theRace">THE #RACE</p>
+      </div>
+      <div class="page">
+        <div class="params">
+          {% block form %}
+          {% endblock %}
+        </div>
+        <div class="game"></div>
+          {% block game %}
+          {% endblock %}
+        <div class="info"></div>
+      </div>
+    </section>
+  </body>
+</html>

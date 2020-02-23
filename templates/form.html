@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block form %}
+  <form class="raceHash" method="POST">
+    <p>
+      {{form.start.label}}
+      {{form.start}}
+    </p>
+    <!-- <input
+      type="text"
+      placeholder="Bananas"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Bananas'"
+    /> -->
+    <p>
+      {{form.end.label}}
+      {{form.end}}
+    </p>
+    <!-- <input
+      type="text"
+      placeholder="EpSteInDidNtKiLLhImsElF"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'EpSteInDidNtKiLLhImsElF'"
+    /> -->
+    <p>
+      <input type="submit" value="GO">
+    </p>
+
+  </form>
+{% endblock %}
