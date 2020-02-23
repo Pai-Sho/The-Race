@@ -66,5 +66,5 @@ def get_tweets_by_hashtag_pair(hashtag_str1: str, hashtag_str2: str, num_tweets:
     return tweet_attributes
 
 
-print(get_tweets_by_hashtag("nike", 20))
+#print(get_tweets_by_hashtag("nike", 20))
 # print(get_tweets_by_hashtag_pair("adidas", "nike", 20))

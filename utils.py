@@ -1,6 +1,6 @@
 from get_tweets import get_tweets_by_hashtag
 
-def __has_n_tweets(hashtag, n=100):
+def has_n_tweets(hashtag, n=100):
     '''
     Determines if a hashtag has set number of tweets about it
 
