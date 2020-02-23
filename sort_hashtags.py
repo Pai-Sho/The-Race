@@ -1,5 +1,6 @@
 import collections
 
+
 def get_top_linked_hashtags(tweets, num_hashtags):
         """
         Get most frequent distinct hashtags from json tweet list
