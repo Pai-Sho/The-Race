@@ -21,18 +21,28 @@
   <p class="butt">
     <input class="goButt" type="submit" value="" />
   </p>
+  <div>
+    <p class="raceHash">{{count}}</p>
+  </div>
 </form>
 {% endblock %} {% block game %}
 <div class="game">
   <div class="startHash">
-    <p class="clicked">{{start_header}}</p>
-    {{start_list.options[0]}} {{start_list.options[1]}} {{start_list.options[2]}}
-    {{start_list.options[3]}} {{start_list.options[4]}}
+    <p class="clicked">#{{start_header}}</p>
+      <form class="flexy" method="get" action="{{ url_for('clicked_left') }}">
+        {% for segment in list_l %}
+          <input class="mega" type="submit" name="hashtag" value="{{segment}}" label="#{{segment}}" />
+        {% endfor %}
+      </form>
   </div>
   <div class="finHash">
-    <p class="clicked">{{end_header}}</p>
-    {{end_list.options[0]}} {{end_list.options[1]}} {{end_list.options[2]}} {{end_list.options[3]}}
-    {{end_list.options[4]}}
+    <p class="clicked">#{{end_header}}</p>
+      <form class="flexy" method="get" action="{{ url_for('clicked_right') }}">
+        {% for segment in list_r %}
+          <input class="mega" type="submit" name="hashtag" value="{{segment}}" label="#{{segment}}" />
+        {% endfor %}
+
+      </form>
   </div>
 </div>
 

@@ -88,6 +88,19 @@ input[type="text"] {
   align-self: center;
 }
 
+.count {
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 50px;
+  width: 200px;
+  height: 200px;
+  color: white;
+  font-weight: 900;
+  font-size: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
 .goButt:hover {
   margin-bottom: 10px;
   background: url("GoButt_BigHover.png") 0px 0px/200px 200px;
@@ -138,7 +151,7 @@ input[type="text"] {
   /* text-align: center; */
 }
 
-input[type="button"] {
+input.mega {
   font-size: 36px;
   font-weight: 700;
   color: #38a1f3;
