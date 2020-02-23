@@ -16,7 +16,7 @@ def get_tweet_embedding(url: str) -> str:
     '''
     Given a url find the dom object associated with it
 
-    Inputs: 
+    Inputs:
         url:    string url directed to tweets
     Outputs:
         string dom object to embed in page
@@ -24,7 +24,7 @@ def get_tweet_embedding(url: str) -> str:
     api = twitter.Api(consumer_key=keys['consumer_api_key'], consumer_secret=keys['consumer_api_secret'],
                       access_token_key=keys['access_token'], access_token_secret=keys['access_token_secret'])
 
-    return api.GetStatusOembed(url=url, hide_thread=True)['html']
+    return api.GetStatusOembed(url=url, hide_thread=True, hide_media=True)['html']
 
 
 def get_tweets_by_hashtag(hashtag_str: str, num_tweets: int, result_type: str='recent') -> List[Dict]:

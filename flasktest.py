@@ -1,36 +1,25 @@
 from flask import Flask
 from flask import render_template, url_for
-from flask_wtf import FlaskForm
-from wtforms import StringField, RadioField, SubmitField
-from wtforms.validators import Length
+from flask_wtf import FlaskForm, Form
+from wtforms import StringField, RadioField, SubmitField, SelectField, Field
+from wtforms.widgets import Input, SubmitInput
+from wtforms.validators import Length, DataRequired
 from flask import request, redirect
 from user import *
 from Bot import Bot
 
 class MyForm(FlaskForm):
-    start = StringField('#Start', [Length(min=1, max=25)])
-    end = StringField('#End', [Length(min=1, max=25)])
+    start = StringField('#Start', [Length(min=1, max=25), DataRequired()])
+    end = StringField('#End', [Length(min=1, max=25), DataRequired()])
 
-class ListForm(FlaskForm):
-    choices = None
-    '''
-    Class ListForm
-
-    Inputs:
-        choices:    list of strings of choices
-    '''
-    def set_choices(self, choices):
-        self.choices = choices
-
-class MyListForm(FlaskForm):
-    def __init__(self, choices):
-        super().__init__(meta={'csrf': False})
-        self.option1 = SubmitField(choices[0])
-        self.option2 = SubmitField(choices[1])
-        self.option3 = SubmitField(choices[2])
-        self.option4 = SubmitField(choices[3])
-        self.option5 = SubmitField(choices[4])
-
+'''
+class oneButton(FlaskForm):
+    b1 = SubmitField('', [DataRequired()])
+    b2 = SubmitField('', [DataRequired()])
+    b3 = SubmitField('', [DataRequired()])
+    b4 = SubmitField('', [DataRequired()])
+    b5 = SubmitField('', [DataRequired()])
+'''
 
 app = Flask(__name__)
 
@@ -39,32 +28,34 @@ round_limit = 15
 count = 0
 bot_path = []
 
+start = ''
+end = ''
 start_header = ''
 end_header = ''
+list_r = ''
+list_l = ''
+
 
 @app.route('/', methods=['GET','POST'])
 def home():
     global bot_path
-    # instantiate bot
     bot = Bot(5, 3)
-
     form = MyForm(meta={'csrf': False})
     if form.validate_on_submit():
-        # run the search
-        #try:
-            #bot_path = bot.search(form.start.data, form.end.data)
-        #print(form.start.data,form.end.data)
         return redirect(url_for('game',start=form.start.data,end=form.end.data), code='307')
-        #except Exception as e:
-            ## TODO: use a UI element to say change input
-            #print('bad')
-    
     return render_template('form.html',form=form)
 
-@app.route('/game', methods=['POST'])
-def game(side='l', selected_hashtag=''):
+@app.route('/game', methods=['GET','POST'])
+def game():
     global count
-    count += 1
+    global start
+    global end
+    global start_header
+    global end_header
+    global list_r
+    global list_l
+
+
     # Go button/start end form
     form = MyForm(meta={'csrf': False})
     # left and right list forms
@@ -73,61 +64,42 @@ def game(side='l', selected_hashtag=''):
 
     print('FUCKSHIT',start,end)
 
-    start_list, end_list = None, None
-    
-    # update the lists depending on the sitution
-    if first:
-        list_l = user_round(start)
-        list_r = user_round(end)
-        # create the forms for both start and end
-        #start_list = ListForm(meta={'csrf': False})
-        #start_list.set_choices(list_l)
-        start_list = MyListForm(list_l)
+    list_l = []
+    list_r = []
+    list_l = user_round(start)[1:6]
+    list_r = user_round(end)[1:6]
 
-        print('start list',start_list.data)
-        #end_list = ListForm(meta={'csrf': False})
-        #end_list.set_choices(list_r)
-        end_list = MyListForm(list_r)
-        print('List 1: {}'.format(list_l))
-        print('List 2: {}'.format(list_r))
+    start_header = start
+    end_header = end
 
-    else:
-        # init lists
-        start_list = request.args.get('start_list')
-        end_list = request.args.get('end_list')
-
-        
-        side = request.args.get('side')
-        new_list = user_round(selected_hashtag)
-        if side == 'l':
-            list_l = new_list
-            #start_list = ListForm(meta={'csrf': False})
-            #start_list.set_choices(list_l)
-            start_list = MyListForm(list_l)
-        else:
-            list_r = new_list
-            #end_list = ListForm(meta={'csrf': False})
-            #end_list.set_choices(list_r)
-            end_list = MyListForm(list_r)
-    
-    # check for winning condition
-    # if set([start] + start_list.choices).intersection(set([end] + end_list.choices)):
-        # WIN
-        # return
-
-    # add on click funcitonality
-    if start_list.validate_on_submit() and start_list.data != {}:    # on click for left and right
-        count += 1
-        #render_template('game.html', start=start, end=end, start_list=start_list, end_list=end_list, form=form)
-        return redirect(url_for('game',start=start_list.data, end=end), code='307')
-    elif end_list.validate_on_submit() and end_list.data != {}:    # on click for left and right
-        count += 1
-        #render_template('game.html', start=start, end=end, start_list=start_list, end_list=end_list, form=form)
-        return redirect(url_for('game',start=start, end=end_list.data), code='307')
-    elif form.validate_on_submit() and (form.start.data != start or form.end.data != end): # on click for Go
+    if form.validate_on_submit() and (form.start.data != start or form.end.data != end): # on click for Go
         count = 0
-        return redirect(url_for('game',start=form.start.data, end=form.end.data), code='307')
-    return render_template('game.html', start=start, end=end, start_list=start_list, end_list=end_list, form=form)
+        return redirect(url_for('game',start=form.start.data, end=form.end.data, start_header=start_header, end_header=end_header, list_r=list_r, list_l=list_l, count=count), code='307')
+
+
+    if count >= 15:
+        return redirect(url_for('loser'))
+
+    return render_template('game.html', start=start, end=end, form=form, start_header=start_header, end_header=end_header, list_r=list_r, list_l=list_l, count=count)
+
+@app.route('/clicked_left', methods=['GET'])
+def clicked_left():
+    global count
+    count += 1
+    print("AHASIFGUAKJDGBKJSDGKLJSEGKLJBSGKDJBGKJSDG")
+    hashtag = request.args.get('hashtag')
+    print("CMON",hashtag)
+    return redirect(url_for('game', start=hashtag, end=end, start_header=start_header, end_header=end_header, list_r=list_r, list_l=list_l, count=count), code='307')
+
+@app.route('/clicked_right', methods=['GET'])
+def clicked_right():
+    global count
+    count += 1
+    print("AHASIFGUAKJDGBKJSDGKLJSEGKLJBSGKDJBGKJSDG")
+    hashtag = request.args.get('hashtag')
+    print("CMON",hashtag)
+    return redirect(url_for('game', start=start, end=hashtag, start_header=start_header, end_header=end_header, list_r=list_r, list_l=list_l, count=count), code='307')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

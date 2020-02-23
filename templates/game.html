@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 {% block form %}
 <form class="raceHash" method="POST">
-
   <p class="raceHash">
     {{form.start.label}}
     {{form.start}}
@@ -25,43 +24,30 @@
   <p class="butt">
     <input class="goButt" type="submit" value="" />
   </p>
+  <div>
+    <p class="raceHash">{{count}}</p>
+  </div>
 </form>
 {% endblock %}
 
 {% block game %}
 <div class="game">
   <div class="startHash">
-    <p class="clicked">{{start_header}}</p>
-    <!-- {% for choice in start_list.choices %}
-    <form action="/game">
-    <input type="submit" name="{{choice}}" value="{{choice}}"><br>
-    </form> -->
-    <!-- {% endfor %} -->
-    <div>
-      <form>
-      <ul value="{{start_list.option1[0]}}">{{start_list.option1}}</ul>
-      <ul value="{{start_list.option2}}">{{start_list.option2}}</ul>
-      <ul value="{{start_list.option3}}">{{start_list.option3}}</ul>
-      <ul value="{{start_list.option4}}">{{start_list.option4}}</ul>
-      <ul value="{{start_list.option5}}">{{start_list.option5}}</ul>
+    <p class="clicked">#{{start_header}}</p>
+      <form class="flexy" method="get" action="{{ url_for('clicked_left') }}">
+        {% for segment in list_l %}
+          <input class="mega" type="submit" name="hashtag" value="{{segment}}" label="#{{segment}}" />
+        {% endfor %}
       </form>
-    </div>
   </div>
   <div class="finHash">
-    <p class="clicked">{{end_header}}</p>
-    <!-- {% for choice in end_list.choices %}
-    <form action="/game">
-    <input type="submit" name="{{choice}}" value="{{choice}}"><br>
-    </form>
-    {% endfor %} -->
+    <p class="clicked">#{{end_header}}</p>
+      <form class="flexy" method="get" action="{{ url_for('clicked_right') }}">
+        {% for segment in list_r %}
+          <input class="mega" type="submit" name="hashtag" value="{{segment}}" label="#{{segment}}" />
+        {% endfor %}
 
-    <div>
-      <ul>start_list.option1 </ul>
-      <ul>start_list.option2 </ul>
-      <ul>start_list.option3 </ul>
-      <ul>start_list.option4 </ul>
-      <ul>start_list.option5 </ul>
-    </div>
+      </form>
   </div>
 </div>
 {% endblock %}
