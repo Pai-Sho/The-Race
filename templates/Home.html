@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="Home.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='Home.css') }}" />
     <link
       href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap"
       rel="stylesheet"
@@ -32,9 +32,6 @@
             /> -->
             <p>Button</p>
           </form>
-          <a class="startGame">
-            <div class="goButt"></div>
-          </a>
         </div>
         <div class="game"></div>
         <div class="info"></div>
