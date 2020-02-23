@@ -27,7 +27,7 @@ def get_tweets_by_hashtag(hashtag_str: str, num_tweets: int, result_type: str='r
                                                                            count=num_tweets))
 
     tweet_attributes = [{'favorite_count': t.favorite_count, 'retweet_count': t.retweet_count,
-                         'hashtags': [h.text for h in t.hashtags],
+                         'hashtags': [h.text.lower() for h in t.hashtags],
                          'url': 'https://twitter.com/{screen_name}/status/{id}'.format(screen_name=t.user.screen_name,
                                                                                        id=t.id_str)}
                         for t in tweets]
