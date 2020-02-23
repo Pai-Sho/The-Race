@@ -25,7 +25,7 @@ section {
 
 .header {
   background-color: #38a1f3;
-  height: 130px;
+  height: 100px;
   width: 100vw;
   align-items: center;
   justify-content: center;
@@ -59,29 +59,33 @@ section {
   flex-grow: 1;
 }
 
-/* BLOCK CONTENT */
+/* HEADER CONTENT */
 p.theRace {
   font-family: "Helvetica";
-  font-size: 100px;
+  font-size: 7vw;
   color: white;
   font-weight: 900;
 }
 
 .logo {
   position: absolute;
-  width: 18vw;
-  padding: 15px 0px 15px 45px;
+  width: 17vw;
+  padding: 5px 0px 15px 45px;
 }
 
+/* PARAMS CONTENT */
 input {
-  width: 200px;
+  width: 250px;
   height: 30px;
-  padding: 12px 20px;
+  padding: 12px 5px;
   margin: 3px 0;
-  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  border: 1px solid #d1d2d4;
   border-radius: 4px;
   box-sizing: border-box;
   background-color: white;
+  font-size: 16px;
+  color: #38a1f3;
 }
 
 .raceHash {
@@ -93,4 +97,20 @@ input {
   font-size: 20px;
   justify-content: center;
   padding-bottom: 30px;
+}
+
+.goButt {
+  margin-bottom: 10px;
+  width: 200px;
+  height: 200px;
+  background: url("GoButt_Big.png") no-repeat;
+}
+
+.goButt:hover {
+  background: url("GoButt_BigHover.png") no-repeat;
+  transition-duration: 0.2s;
+}
+
+::placeholder {
+  color: #d1d2d4;
 }

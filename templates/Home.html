@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='Home.css') }}" />
+    <link rel="stylesheet" href="Home.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap"
       rel="stylesheet"
@@ -16,20 +16,20 @@
       <div class="page">
         <div class="params">
           <form class="raceHash" action="url">
-            <p>{{ form.start}}</p>
-            <!-- <input
+            <p>#Start</p>
+            <input
               type="text"
               placeholder="Bananas"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'Bananas'"
-            /> -->
-            <p>{{form.end}}</p>
-            <!-- <input
+            />
+            <p>#Finish</p>
+            <input
               type="text"
               placeholder="EpSteInDidNtKiLLhImsElF"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'EpSteInDidNtKiLLhImsElF'"
-            /> -->
+            />
           </form>
           <a class="startGame">
             <div class="goButt"></div>

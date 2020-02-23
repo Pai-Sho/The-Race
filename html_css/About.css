@@ -2,7 +2,6 @@
   font-family: "Great Fighter Demo";
   src: url("Great\ Fighter\ Demo.otf");
 }
-/* @font-face used to add downloaded fonts to CSS...make sure font file is in workspace */
 
 * {
   margin: 0;
