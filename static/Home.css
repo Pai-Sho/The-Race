@@ -25,6 +25,7 @@ section {
 }
 
 .header {
+  padding-top: 20px;
   background-color: #38a1f3;
   height: 100px;
   width: 100vw;
@@ -163,5 +164,5 @@ p.theRace {
 .logo {
   position: absolute;
   width: 17vw;
-  padding: 5px 0px 15px 45px;
+  padding: 15px 0px 15px 45px;
 }
