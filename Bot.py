@@ -81,7 +81,7 @@ class Bot:
         #s_leaves = self.__get_leaves()
         for s_leaf in s_leaves:
             if self.end_tree.contains(s_leaf.identifier):
-                path = self.__get_parents(s_leaf.identifier)[:-1] + self.__get_parents(s_leaf.identifier, start=False)[1:]
+                path = self.__get_parents(s_leaf.identifier) + self.__get_parents(s_leaf.identifier, start=False)[1:]
 
         if len(path) > 0:
             return path
@@ -94,7 +94,7 @@ class Bot:
 
         return path
 
-    def __run_round(self):
+    def __run_round(self, first=False):
         '''
         Run a round of the search algorithm
 
@@ -106,14 +106,11 @@ class Bot:
         s_leaves = self.__get_leaves()
         e_leaves = self.__get_leaves(start=False)
 
-        s_leaves_empty = False
-        e_leaves_empty = False
-
         # add leaves to start_tree
         for s_leaf in s_leaves:
             related_tags = self.__get_hashtags(s_leaf.identifier)
-            if len(related_tags) == 0:
-                s_leaves_empty = True
+            if first and len(related_tags) == 0:
+                raise Exception("nope")
             for rt in related_tags:
                 tag = rt[0]
                 c = rt[1]
@@ -122,18 +119,14 @@ class Bot:
         # add leaves to end_tree
         for e_leaf in e_leaves:
             related_tags = self.__get_hashtags(e_leaf.identifier, tree='e')
-            if len(related_tags) == 0:
-                e_leaves_empty = True
+            if first and len(related_tags) == 0:
+                raise Exception("nope")
             for rt in related_tags:
                 tag = rt[0]
                 c = rt[1]
                 self.end_tree.create_node(tag, tag, parent=e_leaf.identifier, data=c)
 
-
         path = self.__find_path()
-
-        if len(path) == 0 and (s_leaves_empty or e_leaves_empty):
-            raise Exception("No related tags found, search unsuccessful")
 
         # find a path
         return path
@@ -181,12 +174,10 @@ class Bot:
             get_tweets_by_hashtag(hashtag_str, num_tweets)
             get_top_linked_hashtags(tweets, num_hashtags)
             '''
-            try:
-                path = self.__run_round()
-            except Exception as e:
-                raise e
-    
+            first = True if i==0 else False
+            path = self.__run_round(first=first)
             self.DEBUG and self.__print_round_info(i)
+
             if len(path) > 0:
                 return path
 
