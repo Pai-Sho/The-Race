@@ -3,6 +3,7 @@ from flask import render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
+from Bot import Bot
 
 class MyForm(FlaskForm):
     start = StringField('#Start', validators=[DataRequired()])
@@ -17,13 +18,12 @@ count = 0
 def home():
     form = MyForm(csrf_enabled=False)
     print('HHHHHHEEEEEERRRRRRRRREEEEEEE')
-    if form.validate_on_submit():
-        start = form.start.data
-        end = form.end.data
-        print(start,end)
-        print('WTF')
     global count
     count += 1
+
+    bot = Bot(4, 3, DEBUG=True)
+    path = bot.search('trump', 'hitler')
+    print(path)
     return render_template('Home.html', form=form)
 
 if __name__ == '__main__':

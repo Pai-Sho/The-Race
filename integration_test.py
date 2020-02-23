@@ -4,8 +4,8 @@ from sort_hashtags import *
 from find_path import *
 from user import *
 
-START = 'sdafasf'
-END = 'putin'
+START = 'buttstuff'
+END = 'iowacaucus'
 
 bot = Bot(4, 3, DEBUG=True)
 
@@ -13,11 +13,12 @@ print('Bot run')
 path = bot.search(START, END)
 print(path)
 
-# url_path = find_path(path)
-# print('URL PATH [0]')
-# print(url_path[0])
-# maybe_dom = get_tweet_embedding(url_path[0])
-# print(maybe_dom)
+url_path = find_path(path)
+print(url_path)
+print('URL PATH [0]')
+print(url_path[0])
+maybe_dom = get_tweet_embedding(url_path[0])
+print(maybe_dom)
 
 print('user run')
 temp = '{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n'
