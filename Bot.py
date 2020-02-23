@@ -110,7 +110,7 @@ class Bot:
         for s_leaf in s_leaves:
             related_tags = self.__get_hashtags(s_leaf.identifier)
             if first and len(related_tags) == 0:
-                raise Exception("nope")
+                raise Exception('#{} has no recent related hashtags'.format(s_leaf.identifier))
             for rt in related_tags:
                 tag = rt[0]
                 c = rt[1]
@@ -120,7 +120,7 @@ class Bot:
         for e_leaf in e_leaves:
             related_tags = self.__get_hashtags(e_leaf.identifier, tree='e')
             if first and len(related_tags) == 0:
-                raise Exception("nope")
+                raise Exception('#{} has no recent related hashtags'.format(e_leaf.identifier))
             for rt in related_tags:
                 tag = rt[0]
                 c = rt[1]
