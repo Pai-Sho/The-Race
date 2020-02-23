@@ -81,7 +81,7 @@ class Bot:
         #s_leaves = self.__get_leaves()
         for s_leaf in s_leaves:
             if self.end_tree.contains(s_leaf.identifier):
-                path = self.__get_parents(s_leaf.identifier)[:-1] + self.__get_parents(s_leaf.identifier, start=False)[1:]
+                path = self.__get_parents(s_leaf.identifier) + self.__get_parents(s_leaf.identifier, start=False)[1:]
 
         if len(path) > 0:
             return path
