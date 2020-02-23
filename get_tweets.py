@@ -27,7 +27,7 @@ def get_tweets_by_hashtag(hashtag_str: str, num_tweets: int, result_type: str='r
                                                                            count=num_tweets))
 
     tweet_attributes = [{'favorite_count': t.favorite_count, 'retweet_count': t.retweet_count,
-                         'hashtags': [h.text for h in t.hashtags], 'lang': t.lang,
+                         'hashtags': [h.text.lower() for h in t.hashtags], 'lang': t.lang,
                          'url': 'https://twitter.com/{screen_name}/status/{id}'.format(screen_name=t.user.screen_name,
                                                                                        id=t.id_str)}
                         for t in tweets]
@@ -58,7 +58,7 @@ def get_tweets_by_hashtag_pair(hashtag_str1: str, hashtag_str2: str, num_tweets:
     print("tweets:")
     print(tweets)
     tweet_attributes = [{'favorite_count': t.favorite_count, 'retweet_count': t.retweet_count,
-                         'hashtags': [h.text for h in t.hashtags], 'lang': t.lang,
+                         'hashtags': [h.text.lower() for h in t.hashtags], 'lang': t.lang,
                          'url': 'https://twitter.com/{screen_name}/status/{id}'.format(screen_name=t.user.screen_name,
                                                                                        id=t.id_str)}
                         for t in tweets]
@@ -66,5 +66,5 @@ def get_tweets_by_hashtag_pair(hashtag_str1: str, hashtag_str2: str, num_tweets:
     return tweet_attributes
 
 
-# print(get_tweets_by_hashtag("nike", 20, 'popular'))
-# print(get_tweets_by_hashtag_pair("adidas", "nike", 20, 'popular'))
+#print(get_tweets_by_hashtag("nike", 20))
+# print(get_tweets_by_hashtag_pair("adidas", "nike", 20))
