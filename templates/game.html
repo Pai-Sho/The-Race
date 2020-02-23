@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block form %}
 <form class="raceHash" method="POST">
-  <p>
+  <p class="raceHash">
     {{form.start.label}} {{form.start}}
   </p>
   <!-- <input
@@ -9,7 +9,7 @@
       onfocus="this.placeholder = ''"
       onblur="this.placeholder = 'Bananas'"
     /> -->
-  <p>
+  <p class="raceHash">
     {{form.end.label}} {{form.end}}
   </p>
   <!-- <input
@@ -25,7 +25,7 @@
 {% endblock %} {% block game %}
 <div class="game">
   <div class="startHash">
-    <p class="clicked">#Bananas</p>
+    <p id="fitty" class="clicked">#Bananas</p>
     <form class="flexy">
       <input type="button" value="#FriedBanana" />
       <input type="button" value="#FriedBanana" />
@@ -45,4 +45,6 @@
     </form>
   </div>
 </div>
+<script src="fittext.js"></script>
+
 {% endblock %}
