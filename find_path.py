@@ -1,6 +1,8 @@
 from typing import List, Dict, Optional
 
-from get_tweets import get_tweets_by_hashtag
+from get_tweets import get_tweets_by_hashtag, get_tweets_by_hashtag_pair
+
+
 ##############################################################
 #                   Private Functions
 ##############################################################
@@ -16,7 +18,7 @@ def __get_related_tweet(hashtag1: str, hashtag2: str, num_tweets: int) -> Option
     '''
     contains_both = []
 
-    tweets = get_tweets_by_hashtag(hashtag1, num_tweets)
+    tweets = get_tweets_by_hashtag_pair(hashtag1, hashtag2, num_tweets)
     print(hashtag1, hashtag2)
     print([t['hashtags'] for t in tweets])
     for twt in tweets:
