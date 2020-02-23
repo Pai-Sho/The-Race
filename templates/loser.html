@@ -1,0 +1,33 @@
+{% extends "layout.html" %} {% block form %}
+<form class="raceHash" method="POST">
+  <p class="raceHash">
+    {{form.start.label}} {{form.start}}
+  </p>
+  <!-- <input
+      type="text"
+      placeholder="Bananas"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Bananas'"
+    /> -->
+  <p class="raceHash">
+    {{form.end.label}} {{form.end}}
+  </p>
+  <!-- <input
+      type="text"
+      placeholder="EpSteInDidNtKiLLhImsElF"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'EpSteInDidNtKiLLhImsElF'"
+    /> -->
+  <p class="butt">
+    <input class="goButt" type="submit" value="" />
+  </p>
+  <div>
+    <p class="raceHash">{{count}}</p>
+  </div>
+</form>
+{% endblock %} {% block game %}
+<div class="game">
+  <button class="loozer">YOU LOSE!!!!</button>
+</div>
+
+{% endblock %}

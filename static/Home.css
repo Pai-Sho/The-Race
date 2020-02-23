@@ -218,3 +218,15 @@ a.button:hover {
   transition-duration: 1s;
   background-color: #f6809a;
 }
+
+button.loozer {
+  width: 75vw;
+  height: 25vw;
+  background-color: red;
+  color: white;
+  font-size: 100px;
+  padding: 50;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
