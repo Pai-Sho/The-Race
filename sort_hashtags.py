@@ -13,7 +13,9 @@ def get_top_linked_hashtags(tweets, num_hashtags):
             top_n_hashtages:  List of top 'num_hashtags' hashtags from input tweets
         """
 
-        all_hashtags = [t for tweet in tweets for t in tweet['hashtags']]
+        english_tweets = [tweet for tweet in tweets if tweet['lang'] == 'en']
+
+        all_hashtags = [t for tweet in english_tweets for t in tweet['hashtags']]
 
         distinct_hashtags = collections.Counter(all_hashtags)
 
