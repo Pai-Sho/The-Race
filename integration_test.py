@@ -4,13 +4,8 @@ from sort_hashtags import *
 from find_path import *
 from user import *
 
-<<<<<<< HEAD
-START = 'cat'
-END = 'anal'
-=======
-START = 'trump'
+START = 'sdafasf'
 END = 'putin'
->>>>>>> 34d41111d8464d9e6888f287de39ddf491c847bd
 
 bot = Bot(4, 3, DEBUG=True)
 
@@ -39,7 +34,3 @@ while True:
         print('oof')
     tags = user_round(next_tag)
     print(temp.format(*tags))
-<<<<<<< HEAD
-=======
-
->>>>>>> 34d41111d8464d9e6888f287de39ddf491c847bd
