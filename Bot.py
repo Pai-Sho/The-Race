@@ -51,6 +51,9 @@ class Bot:
     def __get_parents(self, tag, start=True):
         t = self.start_tree if start else self.end_tree
         r_tag = self.start_hashtag if start else self.end_hashtag
+        # Edge case when things are too close
+        if r_tag == tag:
+            return [tag] if start else ['', tag]
         path = [tag]
         parent = t.parent(tag)
         while parent.identifier != r_tag:
