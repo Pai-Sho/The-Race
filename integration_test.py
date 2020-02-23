@@ -4,8 +4,8 @@ from sort_hashtags import *
 from find_path import *
 from user import *
 
-START = 'furries'
-END = 'nazi'
+START = 'cat'
+END = 'anal'
 
 bot = Bot(4, 3, DEBUG=True)
 
