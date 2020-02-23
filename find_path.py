@@ -1,6 +1,6 @@
 from typing import List, Dict, Optional
 
-from get_tweets import get_tweets_by_hashtag, get_tweets_by_hashtag_pair
+from get_tweets import get_tweets_by_hashtag
 ##############################################################
 #                   Private Functions
 ##############################################################
@@ -14,7 +14,11 @@ def __get_related_tweet(hashtag1: str, hashtag2: str, num_tweets: int) -> Option
     Returns:
         list of strings of urls that relate the two hashtags
     '''
-    tweets = get_tweets_by_hashtag_pair(hashtag1, hashtag2, num_tweets)
+    contains_both = []
+
+    tweets = get_tweets_by_hashtag(hashtag1, num_tweets)
+    print(hashtag1, hashtag2)
+    print([t['hashtags'] for t in tweets])
     for twt in tweets:
         if hashtag2 in twt['hashtags']:
             return twt['url']
@@ -38,6 +42,7 @@ def find_path(path, num_tweets=100):
         hashtag1 = path[i]
         hashtag2 = path[i+1]
         related_tweet = __get_related_tweet(hashtag1, hashtag2, num_tweets)
+        print("\n\nrelated:", related_tweet)
         tweet_path.append(related_tweet)
 
     return tweet_path

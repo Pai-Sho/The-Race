@@ -2,10 +2,6 @@
 <html>
   <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='Home.css') }}" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <section>
@@ -16,9 +12,8 @@
       <div class="page">
         <div class="params">
           <form class="raceHash" action="url">
-            <p>
-              {{form.start.label}}
-              {{form.start}}
+            <p class="raceHash">
+              {{form.start.label}} {{form.start}}
             </p>
             <!-- <input
               type="text"
@@ -26,9 +21,8 @@
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'Bananas'"
             /> -->
-            <p>
-              {{form.end.label}}
-              {{form.end}}
+            <p class="raceHash">
+              {{form.end.label}} {{form.end}}
             </p>
             <!-- <input
               type="text"
@@ -36,13 +30,29 @@
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'EpSteInDidNtKiLLhImsElF'"
             /> -->
-            <p>
-              <input type="submit" value="GO">
+            <p class="butt">
+              <input class="goButt" type="submit" value="" />
             </p>
-            
           </form>
         </div>
-        <div class="game"></div>
+        <div class="game">
+          <div class="startHash">
+            <p class="clicked">#Bananas</p>
+            <input type="button" value="#FriedBanana" />
+            <input type="button" value="#FriedBanana" />
+            <input type="button" value="#FriedBanana" />
+            <input type="button" value="#FriedBanana" />
+            <input type="button" value="#FriedBanana" />
+          </div>
+          <div class="finHash">
+            <p class="clicked">#Apples</p>
+            <input type="button" value="#ApplePie" />
+            <input type="button" value="#ApplePie" />
+            <input type="button" value="#ApplePie" />
+            <input type="button" value="#ApplePie" />
+            <input type="button" value="#ApplePie" />
+          </div>
+        </div>
         <div class="info"></div>
       </div>
     </section>
