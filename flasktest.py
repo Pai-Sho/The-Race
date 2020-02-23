@@ -46,6 +46,10 @@ def home():
         return redirect(url_for('game'))
     global count
     count += 1
+
+    bot = Bot(4, 3, DEBUG=True)
+    path = bot.search('trump', 'hitler')
+    print(path)
     return render_template('Home.html', form=form)
 
 @app.route('/gamestart', methods=('GET','POST'))

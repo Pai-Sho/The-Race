@@ -12,6 +12,20 @@ keys2 = {'access_token': '824402227-3BGKXqBbVGdfyieTu1rXUgoHUDYH5dZViMHQl50V',
         'consumer_api_secret': 'oklYvvXehchyiolR0twqkC5ffmj2MaA325Vn5PSydKsE24VeNc'
 }
 
+def get_tweet_embedding(url: str) -> str:
+    '''
+    Given a url find the dom object associated with it
+
+    Inputs: 
+        url:    string url directed to tweets
+    Outputs:
+        string dom object to embed in page
+    '''
+    api = twitter.Api(consumer_key=keys['consumer_api_key'], consumer_secret=keys['consumer_api_secret'],
+                      access_token_key=keys['access_token'], access_token_secret=keys['access_token_secret'])
+
+    return api.GetStatusOembed(url=url, hide_thread=True)['html']
+
 
 def get_tweets_by_hashtag(hashtag_str: str, num_tweets: int, result_type: str='recent') -> List[Dict]:
     """
@@ -61,8 +75,6 @@ def get_tweets_by_hashtag_pair(hashtag_str1: str, hashtag_str2: str, num_tweets:
                                                                                              result_type=result_type,
                                                                                              count=num_tweets))
 
-    print("tweets:")
-    print(tweets)
     tweet_attributes = [{'favorite_count': t.favorite_count, 'retweet_count': t.retweet_count,
                          'hashtags': [h.text.lower() for h in t.hashtags], 'lang': t.lang,
                          'url': 'https://twitter.com/{screen_name}/status/{id}'.format(screen_name=t.user.screen_name,
