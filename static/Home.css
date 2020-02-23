@@ -13,6 +13,7 @@ html,
 body {
   min-height: 100vh;
   font-family: "Helvetica";
+  overflow-x: hidden;
 }
 
 /* MAIN PAGE BLOCKS */
@@ -64,6 +65,7 @@ input[type="text"] {
   background-color: white;
   font-size: 16px;
   color: #38a1f3;
+  border: 1px solid #9e9e9e;
 }
 
 .raceHash {
@@ -176,4 +178,30 @@ p.theRace {
   font-size: 48px;
   font-weight: 900;
   text-align: center;
+}
+
+footer {
+  height: 40px;
+  width: 980px;
+  position: absolute;
+  bottom: 0;
+  left: 300px;
+  display: block;
+}
+
+a.button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 6px 30px;
+  color: white;
+  font-weight: 900;
+  border-radius: 4px;
+  background-color: #38a1f3;
+}
+
+a.button:hover {
+  transition-duration: 1s;
+  background-color: #f6809a;
 }
