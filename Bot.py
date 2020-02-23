@@ -45,7 +45,7 @@ class Bot:
 
         t = self.start_tree if tree == 's' else self.end_tree
         good_tags = [x for x in hashtags if not t.contains(x[0])]
-        good_tags.sort(key=lambda x: x[1])
+        #good_tags.sort(key=lambda x: x[1])
         return good_tags[:self.num_children]
 
     def __get_parents(self, tag, start=True):
@@ -59,7 +59,7 @@ class Bot:
         while parent.identifier != r_tag:
             path.insert(0, parent.identifier) if start else path.append(parent.identifier)
             parent = t.parent(parent.identifier)
-            
+
         path.insert(0, r_tag) if start else path.append(r_tag)
         return path
 
@@ -81,20 +81,20 @@ class Bot:
                 path = self.__get_parents(s_leaf.identifier) + self.__get_parents(s_leaf.identifier, start=False)[1:]
 
         if len(path) > 0:
-            return path 
+            return path
 
         # search through all start tree leaves
         e_leaves = self.__get_leaves(start=False)
         for e_leaf in e_leaves:
             if self.start_tree.contains(e_leaf.identifier):
                 path = self.__get_parents(e_leaf.identifier) + self.__get_parents(e_leaf.identifier, start=False)[1:]
-        
+
         return path
 
     def __run_round(self):
         '''
         Run a round of the search algorithm
-       
+
         Inputs:
             None
         Outputs:
@@ -103,7 +103,7 @@ class Bot:
         s_leaves = self.__get_leaves()
         e_leaves = self.__get_leaves(start=False)
 
-        # add leaves to start_tree 
+        # add leaves to start_tree
         for s_leaf in s_leaves:
             related_tags = self.__get_hashtags(s_leaf.identifier)
             for rt in related_tags:
@@ -111,14 +111,14 @@ class Bot:
                 c = rt[1]
                 self.start_tree.create_node(tag, tag, parent=s_leaf.identifier, data=c)
 
-        # add leaves to end_tree 
+        # add leaves to end_tree
         for e_leaf in e_leaves:
             related_tags = self.__get_hashtags(e_leaf.identifier, tree='e')
             for rt in related_tags:
                 tag = rt[0]
                 c = rt[1]
                 self.end_tree.create_node(tag, tag, parent=e_leaf.identifier, data=c)
-        
+
         # find a path
         return self.__find_path()
 
@@ -154,8 +154,8 @@ class Bot:
             List of hashtag strings from start to finish. If no path found return []
         """
         # init tree and start and end hashtags
-        self.start_hashtag = start_hashtag
-        self.end_hashtag = end_hashtag
+        self.start_hashtag = start_hashtag.lower()
+        self.end_hashtag = end_hashtag.lower()
         self.start_tree.create_node(start_hashtag, start_hashtag)
         self.end_tree.create_node(end_hashtag, end_hashtag)
 
