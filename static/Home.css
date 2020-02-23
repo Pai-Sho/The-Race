@@ -165,5 +165,6 @@ p.theRace {
 .logo {
   position: absolute;
   width: 17vw;
+  max-width: 200px;
   padding: 15px 0px 15px 45px;
 }
