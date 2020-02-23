@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="CSS/About.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:500,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <section class="container">
+      <div class="nav">
+        <div class="logo">
+          <a href="About.html"><img id="logo" src="images/SWE_Blue.png"/></a>
+        </div>
+        <div class="menu">
+          <ul>
+            <li>
+              <a class="pagelink" href="Projects.html">Projects</a>
+            </li>
+            <li>
+              <a class="pagelink" href="Courses.html">Courses</a>
+            </li>
+            <li><a class="pagelink" href="About.html">About</a></li>
+            <li>
+              <a class="pagelink" href="CV_EVANS.pdf" target="_blank">CV </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="header">
+          <h1 class="title">Steve The Engineer</h1>
+        </div>
+        <div class="page">
+          <div class="profpic">
+            <img class="slide" src="images/BioPic2.jpg" />
+            <img class="slide" src="images/BioPic1.jpg" />
+            <img class="slide" src="images/BioPic3.jpg" />
+            <img class="slide" src="images/BioPic4.jpg" />
+          </div>
+
+          <span>
+            <p class="disclaim">
+              <strong>DISCLAIMER:</strong> Things are still a bit under construction around here...
+            </p>
+            <p class=".bio" id="about" style="font-size: larger;">
+              <br />
+              Hey I'm Steve and this is my portfolio!
+              <br />
+              <br />
+              I'm a current Mechanical Engineering graduate student at CU Boulder interested in
+              medical devices, robotics, consumer electronics, and just about any other mechanical
+              design challenge. My experience is in CAD, fabrication, DFMA, and engineering
+              principles, but I'm always looking for opportunities to expand and improve!
+
+              <br />
+              <br />
+
+              When I'm not busy with the design and build process you can find me rock climbing in
+              Boulder Canyon, trying to tire out my dog at the park, or continuing the slow grind of
+              learning to code in my free time.
+            </p>
+            <br />
+          </span>
+        </div>
+        <footer class="footer">
+          <a href="https://www.linkedin.com/in/stephenwevans/" target="_blank">
+            <img class="footLink" src="images/Steve-LinkedIn.png" style="height:30px" />
+          </a>
+          <a href="https://www.linkedin.com/in/stephenwevans/" target="_blank">
+            <img class="footLink" src="images/Steve-GrabCad.png" style="height:20px" />
+          </a>
+          <!-- <p>-- POWERED BY STEVE --</p> -->
+        </footer>
+      </div>
+    </section>
+    <script>
+      var currentImageIndex = 0;
+      carousel();
+      setInterval(carousel, 4000); // Change image every 4 seconds
+
+      function carousel() {
+        var i;
+        // get an Array of elements matching .slide - [div, div, div]
+        var slideElements = document.querySelectorAll(".slide");
+
+        // set all elements to invisible
+        for (i = 0; i < slideElements.length; i++) {
+          slideElements[i].style.opacity = 0;
+        }
+
+        // set the next element in the carousel to visible
+        slideElements[currentImageIndex].style.opacity = 1;
+
+        // increment, wrapping around to 0 when it exceeds the array length
+        currentImageIndex++;
+        currentImageIndex = currentImageIndex % slideElements.length;
+      }
+    </script>
+  </body>
+</html>
