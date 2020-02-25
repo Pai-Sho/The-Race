@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  /* font-size: 100%; */
+  vertical-align: baseline;
+  background: transparent;
+  cursor: default;
+}
+
+html,
+body {
+  min-height: 100vh;
+  font-family: "Helvetica";
+}
+
+/* MAIN PAGE BLOCKS */
+section {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vh;
+}
+
+.header {
+  padding-top: 20px;
+  padding-left: 25vw;
+  background-color: #38a1f3;
+  height: 100px;
+  width: 100vw;
+  align-items: center;
+  /* justify-content: center; */
+  display: flex;
+}
+
+.page {
+  width: 100vw;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+/*########################################################*/
+/*########################################################*/
+.params {
+  background-color: #71c9f8;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
+
+input[type="text"] {
+  width: 250px;
+  height: 30px;
+  padding: 12px 5px;
+  margin: 3px 0;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: white;
+  font-size: 16px;
+  color: #38a1f3;
+}
+
+.raceHash {
+  display: flex;
+  flex-direction: column;
+  font-family: "Helvetica";
+  color: white;
+  font-weight: 900;
+  font-size: 20px;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.goButt {
+  margin-bottom: 10px;
+  width: 200px;
+  height: 200px;
+  background: url("GoButt_Big.png") 0px 0px/200px 200px;
+  object-fit: contain;
+  align-self: center;
+}
+
+.goButt:hover {
+  margin-bottom: 10px;
+  background: url("GoButt_BigHover.png") 0px 0px/200px 200px;
+  object-fit: contain;
+  transition-duration: 0.5s;
+}
+
+.butt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ::placeholder {
+  color: #d1d2d4;
+} */
+/*########################################################*/
+/*########################################################*/
+
+.game {
+  background-color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  font-size: 48px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.startHash {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 10px;
+  border-right: 3px solid #f5f8fa;
+  padding-top: 15px;
+}
+.finHash {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 15px;
+}
+.clicked {
+  color: #9e9e9e;
+  padding-bottom: 7px;
+  text-transform: uppercase;
+  /* text-align: center; */
+}
+
+input[type="button"] {
+  font-size: 36px;
+  font-weight: 700;
+  color: #38a1f3;
+  margin: 8px 0px;
+}
+
+.flexy {
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  background-color: #f5f8fa;
+  width: 250px;
+  flex-grow: 1;
+}
+
+/* HEADER CONTENT */
+p.theRace {
+  font-family: "Helvetica";
+  font-size: 7vw;
+  color: white;
+  font-weight: 900;
+}
+
+.logo {
+  position: absolute;
+  width: 17vw;
+  max-width: 250px;
+  padding: 15px 0px 15px 45px;
+}
+.resultz {
+  background-color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 48px;
+  font-weight: 900;
+}
+
+.twitter-tweet {
+  margin-left: 20px;
+}
+
+.tweetTrack {
+  font-size: 30px;
+  color: #9e9e9e;
+  align-self: center;
+}

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='Home.css') }}" />
@@ -13,11 +12,12 @@
       <div class="header">
         <p class="theRace">THE #RACE</p>
       </div>
-      <div class="page">
-        <div class="params">
-          {% block form %} {% endblock %}
-        </div>
-        {% block game %} {% endblock %}
+      <div style="position: absolute; left: 350px; top: 175px">
+        {{path}}
+      </div>
+      <div style="position: absolute; left:400px; top:200px">
+        {{embedhtml | safe}}
+
       </div>
     </section>
   </body>

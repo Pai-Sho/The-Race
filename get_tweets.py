@@ -6,7 +6,7 @@ keys = {'access_token': '1231336266597142528-2N7I91ndaCQ9BCLWeyh6uG7eiKO0zO',
         'consumer_api_key': 'FgygPBQmkfJXJY7rzkqixy0yQ',
         'consumer_api_secret': 'CxQnDr7Wdmsogss0KmLqf2c7QVsfRxq7KbqLdttqOwh66StFgo'}
 
-keys2 = {'access_token': '824402227-3BGKXqBbVGdfyieTu1rXUgoHUDYH5dZViMHQl50V',
+keys = {'access_token': '824402227-3BGKXqBbVGdfyieTu1rXUgoHUDYH5dZViMHQl50V',
         'access_token_secret': 'Xv8MrDoZv2nX3R97XBd6d9q83TnSfVBvOEkB9YJyiEy2f',
         'consumer_api_key': 'bsDONudtGds6xnROaR6Ypp4xz',
         'consumer_api_secret': 'oklYvvXehchyiolR0twqkC5ffmj2MaA325Vn5PSydKsE24VeNc'
@@ -24,7 +24,7 @@ def get_tweet_embedding(url: str) -> str:
     api = twitter.Api(consumer_key=keys['consumer_api_key'], consumer_secret=keys['consumer_api_secret'],
                       access_token_key=keys['access_token'], access_token_secret=keys['access_token_secret'])
 
-    return api.GetStatusOembed(url=url, hide_thread=True)['html']
+    return api.GetStatusOembed(url=url, hide_thread=True, hide_media=True)['html']
 
 
 def get_tweets_by_hashtag(hashtag_str: str, num_tweets: int, result_type: str='recent') -> List[Dict]:
