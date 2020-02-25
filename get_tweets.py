@@ -12,6 +12,12 @@ keys2 = {'access_token': '824402227-3BGKXqBbVGdfyieTu1rXUgoHUDYH5dZViMHQl50V',
         'consumer_api_secret': 'oklYvvXehchyiolR0twqkC5ffmj2MaA325Vn5PSydKsE24VeNc'
 }
 
+keys3 = {'access_token': '824776302079012864-O86by3AYa0aEPoFPHZIm7lldHJnIeGG',
+        'access_token_secret': 'CWTPERGhJMdA9O1qjewq3xtMK5nsOVN52X1xUFBzFT3KK',
+        'consumer_api_key': 'BmSrSOqFRJ0jqMy38858doyzi',
+        'consumer_api_secret': 'MU20lkffcWbUMV8lj193yvB9NUo28xGiLnI8Vgb38zHBjiYhyd'
+}
+
 def get_tweet_embedding(url: str) -> str:
     '''
     Given a url find the dom object associated with it
