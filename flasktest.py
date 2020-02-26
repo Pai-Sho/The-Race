@@ -62,8 +62,6 @@ def game():
     start = request.args.get('start')
     end = request.args.get('end')
 
-    print('FUCKSHIT',start,end)
-
     list_l = []
     list_r = []
     list_l = user_round(start)[1:6]
@@ -86,20 +84,19 @@ def game():
 def clicked_left():
     global count
     count += 1
-    print("AHASIFGUAKJDGBKJSDGKLJSEGKLJBSGKDJBGKJSDG")
     hashtag = request.args.get('hashtag')
-    print("CMON",hashtag)
     return redirect(url_for('game', start=hashtag, end=end, start_header=start_header, end_header=end_header, list_r=list_r, list_l=list_l, count=count), code='307')
 
 @app.route('/clicked_right', methods=['GET'])
 def clicked_right():
     global count
     count += 1
-    print("AHASIFGUAKJDGBKJSDGKLJSEGKLJBSGKDJBGKJSDG")
     hashtag = request.args.get('hashtag')
-    print("CMON",hashtag)
     return redirect(url_for('game', start=start, end=hashtag, start_header=start_header, end_header=end_header, list_r=list_r, list_l=list_l, count=count), code='307')
 
+@app.route('/loser', methods=['GET'])
+def loser():
+    return render_template('loser.html', form = MyForm(meta={'csrf': False}))
 
 if __name__ == '__main__':
     app.run(debug=True)
