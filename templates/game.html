@@ -1,23 +1,13 @@
-{% extends "layout.html" %} {% block form %}
+{% extends "layout.html" %}
+
+{% block form %}
 <form class="raceHash" method="POST">
   <p class="raceHash">
     {{form.start.label}} {{form.start}}
   </p>
-  <!-- <input
-      type="text"
-      placeholder="Bananas"
-      onfocus="this.placeholder = ''"
-      onblur="this.placeholder = 'Bananas'"
-    /> -->
   <p class="raceHash">
     {{form.end.label}} {{form.end}}
   </p>
-  <!-- <input
-      type="text"
-      placeholder="EpSteInDidNtKiLLhImsElF"
-      onfocus="this.placeholder = ''"
-      onblur="this.placeholder = 'EpSteInDidNtKiLLhImsElF'"
-    /> -->
   <p class="butt">
     <input class="goButt" type="submit" value="" />
   </p>
@@ -25,13 +15,15 @@
     <p class="raceHash">{{count}}</p>
   </div>
 </form>
-{% endblock %} {% block game %}
+{% endblock %}
+
+{% block game %}
 <div class="game">
   <div class="startHash">
     <p class="clicked">#{{start_header}}</p>
       <form class="flexy" method="get" action="{{ url_for('clicked_left') }}">
         {% for segment in list_l %}
-          <input class="mega" type="submit" name="hashtag" value="{{segment}}" label="#{{segment}}" />
+          <input class="mega" type="submit" name="hashtag" value="#{{segment}}" label="#{{segment}}" />
         {% endfor %}
       </form>
   </div>
@@ -39,9 +31,8 @@
     <p class="clicked">#{{end_header}}</p>
       <form class="flexy" method="get" action="{{ url_for('clicked_right') }}">
         {% for segment in list_r %}
-          <input class="mega" type="submit" name="hashtag" value="{{segment}}" label="#{{segment}}" />
+          <input class="mega" type="submit" name="hashtag" value="#{{segment}}" label="#{{segment}}" />
         {% endfor %}
-
       </form>
   </div>
 </div>
