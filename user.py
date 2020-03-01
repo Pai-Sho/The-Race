@@ -6,7 +6,7 @@ from Agent import *
 
 class User(Agent):
 
-    def __init__(self, max_depth, num_children, num_tweets=100, DEBUG=False, start_hashtag, end_hashtag):
+    def __init__(self, max_depth, num_children, start_hashtag, end_hashtag, num_tweets=100, DEBUG=False):
         return super().__init__(max_depth, num_children, num_tweets, DEBUG)
         self.n_show = 5
         self.current_side = 0

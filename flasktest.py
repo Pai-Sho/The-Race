@@ -7,6 +7,7 @@ from wtforms.validators import Length, DataRequired
 from flask import request, redirect
 from user_old import *
 from Bot import Bot
+from User import User
 
 class StartGameForm(FlaskForm):
     start = StringField('#Start', [Length(min=1, max=25), DataRequired()])
